@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "crud-4e634": {
+      "hosting": {
+        "sandbox": [
+          "crud-4e634"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "crud-4e634"
+  }
+}
