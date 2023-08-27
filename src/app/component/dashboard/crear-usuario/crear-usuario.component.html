@@ -8,22 +8,17 @@
           [colspan]="1"
           [rowspan]="1">
           <mat-form-field class="example-full-width">
-              <mat-label>usuario</mat-label>
-              <input matInput placeholder="ingrese su username" formControlName="usuario">
+              <mat-label>inversiones</mat-label>
+              <input matInput placeholder="ingrese su username" formControlName="inversion">
             </mat-form-field>
       </mat-grid-tile>
-          <mat-grid-tile 
-          [colspan]="3"
-          [rowspan]="5"
-          [style.background]="'lightgreen'">
-          <button formControlName="img" mat-raised-button color="primary">img</button>
-      </mat-grid-tile>
+       
           <mat-grid-tile 
           [colspan]="1"
           [rowspan]="1"
           >
           <mat-form-field class="example-full-width">
-              <mat-label>nombre</mat-label>
+              <mat-label>capital inicial</mat-label>
               <input matInput placeholder="nombre" formControlName="nombre">
             </mat-form-field>
       </mat-grid-tile>
@@ -32,25 +27,22 @@
           [rowspan]="1"
           >
           <mat-form-field class="example-full-width">
-              <mat-label>apellido</mat-label>
-              <input matInput placeholder="ingrese su apellido" formControlName="apellido" >
+              <mat-label>valor actual</mat-label>
+              <input matInput placeholder="ingrese su apellido" formControlName="valor" >
             </mat-form-field>
+           </mat-grid-tile>
           
-      </mat-grid-tile>
-          <mat-grid-tile 
+           <mat-grid-tile 
           [colspan]="1"
           [rowspan]="1"
           >
-         
-  <mat-form-field class="sexo">
-    <mat-label>sexo</mat-label>
-    <mat-select formControlName="sexo">
-      <mat-option *ngFor="let sexo of sexo" [value]="sexo.value">
-        {{sexo.viewValue}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-      </mat-grid-tile>
+            <mat-form-field class="example-full-width">
+              <mat-label>fecha</mat-label>
+              <input matInput placeholder="ingrese su apellido" formControlName="fecha" >
+            </mat-form-field>
+           </mat-grid-tile>
+  
+ 
           <mat-grid-tile >
           <button type="submit" class="separar" (click)="addUser()" mat-raised-button color="primary">aceptar</button>
           <button type="submit"  mat-raised-button color="primary">volver</button>

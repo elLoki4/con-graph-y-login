@@ -33,10 +33,10 @@ export class InicioComponent {
   dataSource!: MatTableDataSource<any>;
 
   displayedColumns: string[] = [
-    'Username',
-    'Name',
-    'Lastname',
-    'Sex',
+    'fecha',
+    'inversion',
+    'capital',
+    'valor',
     'Action',
   ];
   ngAfterViewInit() {
