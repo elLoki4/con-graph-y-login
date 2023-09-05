@@ -9,6 +9,8 @@ import { SharedModule } from './component/shared/shared.module';
 import { InicioComponent } from './component/dashboard/inicio/inicio.component';
 import { CrearUsuarioComponent } from './component/dashboard/crear-usuario/crear-usuario.component';
 
+
+
 const routes: Routes = [
   {
     path: '',
@@ -37,6 +39,10 @@ const routes: Routes = [
     path: 'dashboard/crearusuario',
     component: CrearUsuarioComponent,
   },
+  {
+    path: 'dashboard/graph',
+loadChildren:()=>import('./component/dashboard/graph/graph.module').then(m=>m.GraphModule)
+  },
 ];
 
 @NgModule({
@@ -47,7 +53,8 @@ const routes: Routes = [
     InicioComponent,
     CrearUsuarioComponent,
   ],
-  imports: [SharedModule, CommonModule, RouterModule.forRoot(routes)],
+  imports: [SharedModule,
+   CommonModule, RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

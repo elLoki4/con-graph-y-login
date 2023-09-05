@@ -11,10 +11,16 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { GraphModule } from './component/dashboard/graph/graph.module';
+
+
+
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ],
   imports: [
+    MatToolbarModule,
     BrowserModule,
     CommonModule,
     RouterModule,
@@ -24,6 +30,7 @@ import { CommonModule } from '@angular/common';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     BrowserAnimationsModule,
+    GraphModule
   ],
   providers: [],
   bootstrap: [AppComponent],

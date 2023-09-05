@@ -50,8 +50,8 @@
          <ng-container matColumnDef="Action" >
              <th mat-header-cell *matHeaderCellDef ></th>
              <td mat-cell *matCellDef style="text-align:right;">
-               <a href="#">
-                 <mat-icon aria-hidden="false" style="color:black;" aria-label="Example home icon" fontIcon="search" matTooltip="Search" aria-label="Button that displays a tooltip when focused or hovered over"></mat-icon>
+               <a routerLink="/dashboard/graph">
+                 <mat-icon aria-hidden="false" style="color:black;" aria-label="Example home icon"  fontIcon="analytics" matTooltip="graph" aria-label="Button that displays a tooltip when focused or hovered over"></mat-icon>
                </a>
                <a  style="color:red;" >
                  <mat-icon aria-hidden="false" (click)="eliminarUsuario(listUser)" aria-label="Example home icon"  fontIcon="delete"  matTooltip="Delete" aria-label="Button that displays a tooltip when focused or hovered over" ></mat-icon>
