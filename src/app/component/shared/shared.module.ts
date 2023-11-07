@@ -17,8 +17,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatGridListModule } from '@angular/material/grid-list';
-
-
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [],
@@ -41,6 +40,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatFormFieldModule,
     MatButtonModule,
     MatTooltipModule,
+    NgChartsModule,
   ],
   exports: [
     MatTableModule,
@@ -61,6 +61,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatGridListModule,
     MatSortModule,
     MatTooltipModule,
+    NgChartsModule,
   ],
 })
 export class SharedModule {}

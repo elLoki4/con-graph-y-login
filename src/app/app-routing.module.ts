@@ -8,6 +8,7 @@ import { RegisterComponent } from './component/pages/register/register.component
 import { SharedModule } from './component/shared/shared.module';
 import { InicioComponent } from './component/dashboard/inicio/inicio.component';
 import { CrearUsuarioComponent } from './component/dashboard/crear-usuario/crear-usuario.component';
+import { InicioModule } from './component/dashboard/inicio/inicio.module';
 
 const routes: Routes = [
   {
@@ -29,19 +30,16 @@ const routes: Routes = [
         (m) => m.ReportesModule,
       ),
   },
-  {
-    path: 'dashboard/inicio',
-    component: InicioComponent,
-  },
+
   {
     path: 'dashboard/crearusuario',
     component: CrearUsuarioComponent,
   },
   {
-    path: 'dashboard/chart',
+    path: 'dashboard/inicio',
     loadChildren: () =>
-      import('./component/dashboard/graph/graph.module').then(
-        (m) => m.GraphModule,
+      import('./component/dashboard/inicio/inicio.module').then(
+        (m) => m.InicioModule,
       ),
   },
 ];

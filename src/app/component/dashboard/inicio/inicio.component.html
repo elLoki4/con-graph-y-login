@@ -6,12 +6,21 @@
        <mat-toolbar>
          <span>Usuarios</span>
  <span class="example-spacer "></span>
- <button routerLink="/dashboard/crearusuario" mat-raised-button color="primary">Agregar</button>
+ <button class="agregar" routerLink="/dashboard/crearusuario" mat-raised-button color="primary">Agregar</button>
        </mat-toolbar>
      </p>
      
      
-     
+    
+      <canvas baseChart
+  [type]="'line'"
+  [datasets]="pieChartDatasets"
+  [labels]="pieChartLabels"
+  [options]="pieChartOptions"
+  [plugins]="pieChartPlugins"
+  [legend]="pieChartLegend">
+</canvas>
+    
      
    
      <mat-form-field>
@@ -50,11 +59,11 @@
          <ng-container matColumnDef="Action" >
              <th mat-header-cell *matHeaderCellDef ></th>
              <td mat-cell *matCellDef style="text-align:right;">
-               <a routerLink="/dashboard/graph">
-                 <mat-icon aria-hidden="false" style="color:black;" aria-label="Example home icon"  fontIcon="analytics" matTooltip="graph" aria-label="Button that displays a tooltip when focused or hovered over"></mat-icon>
+               <a routerLink="/dashboard/chart">
+                 <mat-icon aria-hidden="false" style="color:black;" aria-label="Example home icon"  fontIcon="analytics" matTooltip="charts" aria-label="Button that displays a tooltip when focused or hovered over"></mat-icon>
                </a>
                <a  style="color:red;" >
-                 <mat-icon aria-hidden="false" (click)="eliminarUsuario(listProduct)" aria-label="Example home icon"  fontIcon="delete"  matTooltip="Delete" aria-label="Button that displays a tooltip when focused or hovered over" ></mat-icon>
+                 <mat-icon aria-hidden="false" (click)="eliminarProducto(listProduct)" aria-label="Example home icon"  fontIcon="delete"  matTooltip="Delete" aria-label="Button that displays a tooltip when focused or hovered over" ></mat-icon>
                </a>
                <a href="#">
                  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="edit" matTooltip="Edit" aria-label="Button that displays a tooltip when focused or hovered over"></mat-icon>
