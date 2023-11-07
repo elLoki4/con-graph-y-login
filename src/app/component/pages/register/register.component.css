@@ -1,0 +1,40 @@
+.entorno {
+  background: #373b44; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #4286f4,
+    #373b44
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #4286f4, #373b44);
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+.card {
+  background: rgba(0, 0, 0, 0.7);
+}
+h1 {
+  color: white;
+}
+.input {
+  margin-bottom: 10px;
+  padding: 0 3em;
+}
+input {
+  width: 15em;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+}
+img {
+  margin-top: 10px;
+  width: 9em;
+  border-radius: 50%;
+}
+button {
+  margin-bottom: 10px;
+  width: 70%;
+}

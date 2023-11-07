@@ -1,11 +1,13 @@
-a{
-    margin-left: 2em;
+a {
+  margin-left: 2em;
+  text-decoration: none;
 }
-.active{
-    margin-left: 2em;
-    color:rgba(45, 241, 27) ;
+.active {
+  margin-left: 2em;
+  color: rgba(45, 241, 27);
+  text-decoration: underline;
 }
-a:hover{
-    margin-left: 2em;
-    color:red;
+a:hover {
+  margin-left: 2em;
+  color: rgb(151, 226, 144);
 }

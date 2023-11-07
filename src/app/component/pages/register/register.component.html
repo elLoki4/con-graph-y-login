@@ -1,6 +1,21 @@
-<h1>registro</h1>
-<form (ngSubmit)="registrar()">
-    <input type="text" placeholder="mail" name="mail" [(ngModel)]="persona.mail">
-    <input type="text" placeholder="password" name="password" [(ngModel)]="persona.password">
-    <button type="submit">enviar</button>
-</form>
+<div class="entorno">
+    <div class="container text-center">
+   <div class="card">
+    <div class="body-card">
+        <form (ngSubmit)="registrar()">
+            <img src="https://img.freepik.com/vector-premium/icono-perfil-avatar_188544-4755.jpg?w=740" alt="user">
+            <h1 >registro</h1>
+           <div class="input"> <input type="text" placeholder="mail" name="mail" [(ngModel)]="persona.mail">
+           </div>
+           <div class="input"> <input type="password" placeholder="password" name="password" [(ngModel)]="persona.password">
+           </div>
+           <button  class="button" type="submit" class="btn btn-primary">enviar</button>
+        </form>
+    </div>
+   </div>
+</div>
+
+
+
+    
+</div>
