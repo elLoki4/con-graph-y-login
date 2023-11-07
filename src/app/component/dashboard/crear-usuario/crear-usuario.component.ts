@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { Usuario } from '../../interface/usuario';
+import { product } from '../../interface/usuario';
 import { EnvironmentsService } from '../../service/environments.service';
 
 @Component({
@@ -17,18 +17,18 @@ export class CrearUsuarioComponent {
   constructor(
     private fire: EnvironmentsService,
     private snack: MatSnackBar,
-    private route: Router
+    private route: Router,
   ) {
     this.form = new FormGroup({
-      inversion: new FormGroup('', [Validators.required]),
+      producto: new FormGroup('', [Validators.required]),
       fecha: new FormGroup('', [Validators.required]),
-      capital: new FormGroup('', [Validators.required]),
-      valor: new FormGroup(''),
+      stock: new FormGroup('', [Validators.required]),
+      ventas: new FormGroup('', [Validators.required]),
     });
   }
 
   openSnackBar() {
-    this.snack.open('el usuario ya fue creado', '', {
+    this.snack.open('producto añadido', '', {
       duration: 300,
       horizontalPosition: 'center',
       verticalPosition: 'top',
@@ -36,13 +36,13 @@ export class CrearUsuarioComponent {
   }
 
   async addUser() {
-    const user: Usuario = {
-      inversion: this.form.value.inversion,
-      valor: this.form.value.valor,
-      capital: this.form.value.capital,
+    const product: product = {
+      producto: this.form.value.producto,
+      ventas: this.form.value.ventas,
+      stock: this.form.value.stock,
       fecha: this.form.value.fecha,
     };
-    const response = await this.fire.addUser(user);
+    const response = await this.fire.addUser(product);
     this.route.navigate(['/dashboard/inicio']);
   }
 }

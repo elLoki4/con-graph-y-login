@@ -1,7 +1,7 @@
-export interface Usuario {
+export interface product {
   id?: string | number;
-  capital: number;
-  valor: number;
+  stock: number;
+  ventas: number;
   fecha: number;
-  inversion: string;
+  producto: string;
 }

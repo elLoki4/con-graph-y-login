@@ -9,8 +9,6 @@ import { SharedModule } from './component/shared/shared.module';
 import { InicioComponent } from './component/dashboard/inicio/inicio.component';
 import { CrearUsuarioComponent } from './component/dashboard/crear-usuario/crear-usuario.component';
 
-
-
 const routes: Routes = [
   {
     path: '',
@@ -28,7 +26,7 @@ const routes: Routes = [
     path: 'dashboard/reportes',
     loadChildren: () =>
       import('./component/dashboard/reportes/reportes.module').then(
-        (m) => m.ReportesModule
+        (m) => m.ReportesModule,
       ),
   },
   {
@@ -40,8 +38,11 @@ const routes: Routes = [
     component: CrearUsuarioComponent,
   },
   {
-    path: 'dashboard/graph',
-loadChildren:()=>import('./component/dashboard/graph/graph.module').then(m=>m.GraphModule)
+    path: 'dashboard/chart',
+    loadChildren: () =>
+      import('./component/dashboard/graph/graph.module').then(
+        (m) => m.GraphModule,
+      ),
   },
 ];
 
@@ -53,8 +54,7 @@ loadChildren:()=>import('./component/dashboard/graph/graph.module').then(m=>m.Gr
     InicioComponent,
     CrearUsuarioComponent,
   ],
-  imports: [SharedModule,
-   CommonModule, RouterModule.forRoot(routes)],
+  imports: [SharedModule, CommonModule, RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
