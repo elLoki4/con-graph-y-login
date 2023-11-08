@@ -5,7 +5,7 @@ import { EnvironmentsService } from '../../service/environments.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatPaginator } from '@angular/material/paginator';
 import { product } from '../../interface/usuario';
-import { ChartOptions } from 'chart.js';
+import { ChartConfiguration } from 'chart.js';
 
 @Component({
   selector: 'app-inicio',
@@ -27,6 +27,7 @@ export class InicioComponent {
   ngOnInit(): void {
     this.getUser.getUser().subscribe((product) => {
       this.listProduct = product;
+     
 
       this.dataSource = new MatTableDataSource(this.listProduct);
     });
@@ -60,16 +61,18 @@ export class InicioComponent {
 
   title = 'ng2-charts-demo';
 
-  // Pie
-  public pieChartOptions: ChartOptions<'line'> = {
+  public barChartLegend = true;
+  public barChartPlugins = [];
+
+  public barChartData: ChartConfiguration<'bar'>['data'] = {
+    labels: ['2006', '2007', '2008', '2009', '2010', '2011', '2012'],
+    datasets: [
+      { data: [65, 59], label: 'Series A' },
+      { data: [28, 48], label: 'Series B' },
+    ],
+  };
+
+  public barChartOptions: ChartConfiguration<'bar'>['options'] = {
     responsive: false,
   };
-  public pieChartLabels = ['mayo', 'junio', 'julio', 'agosto', 'septiembre'];
-  public pieChartDatasets = [
-    {
-      data: [1.6, 1.5, 1.3, 2.5, 1.0],
-    },
-  ];
-  public pieChartLegend = true;
-  public pieChartPlugins = [];
 }
