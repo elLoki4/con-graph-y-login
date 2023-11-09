@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatPaginator } from '@angular/material/paginator';
 import { product } from '../../interface/usuario';
 import { ChartConfiguration } from 'chart.js';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-inicio',
@@ -17,6 +18,7 @@ export class InicioComponent {
     private fire: EnvironmentsService,
     private _snackBar: MatSnackBar,
     private getUser: EnvironmentsService,
+    private store: Store<any>,
   ) {}
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -27,7 +29,7 @@ export class InicioComponent {
   ngOnInit(): void {
     this.getUser.getUser().subscribe((product) => {
       this.listProduct = product;
-     
+      console.log(this.listProduct);
 
       this.dataSource = new MatTableDataSource(this.listProduct);
     });
