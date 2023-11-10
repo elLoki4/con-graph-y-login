@@ -8,10 +8,7 @@ const routes: Routes = [{ path: '', component: InicioComponent }];
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule /*hay que ingresar elsharedModule */,
-    RouterModule.forChild(routes),
-  ],
+  imports: [CommonModule, RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
 export class InicioRoutingModule {}

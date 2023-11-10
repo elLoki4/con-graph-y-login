@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { EnvironmentsService } from '../../service/environments.service';
@@ -27,7 +27,6 @@ export class InicioComponent {
   ngOnInit(): void {
     this.getUser.getUser().subscribe((product) => {
       this.listProduct = product;
-     
 
       this.dataSource = new MatTableDataSource(this.listProduct);
     });
