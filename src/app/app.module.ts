@@ -12,8 +12,6 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { StoreModule } from '@ngrx/store';
-
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,8 +26,6 @@ import { StoreModule } from '@ngrx/store';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     BrowserAnimationsModule,
-    StoreModule.forRoot({}, {}),
-  
   ],
   providers: [],
   bootstrap: [AppComponent],

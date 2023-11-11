@@ -17,8 +17,15 @@ export class InicioComponent {
     private fire: EnvironmentsService,
     private _snackBar: MatSnackBar,
     private getUser: EnvironmentsService,
-  ) {}
-
+  ) {
+    this.agregarDataset(
+      this.listProduct.map((item) => item.stock),
+      'Ventas Mensuales',
+    );
+  }
+  agregarDataset(datos: number[], label: string): void {
+    this.barChartData.datasets.push({ data: datos, label: label });
+  }
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -27,7 +34,7 @@ export class InicioComponent {
   ngOnInit(): void {
     this.getUser.getUser().subscribe((product) => {
       this.listProduct = product;
-
+      console.log(this.listProduct);
       this.dataSource = new MatTableDataSource(this.listProduct);
     });
   }
@@ -49,7 +56,7 @@ export class InicioComponent {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  async eliminarProducto(product: any) {
+  async eliminarProducto(product: product) {
     const deleteId = await this.fire.deleteUser(product);
     this._snackBar.open('el producto fue eliminado', '', {
       duration: 3000,
@@ -57,8 +64,6 @@ export class InicioComponent {
       verticalPosition: 'top',
     });
   }
-
-  title = 'ng2-charts-demo';
 
   public barChartLegend = true;
   public barChartPlugins = [];
@@ -72,6 +77,6 @@ export class InicioComponent {
   };
 
   public barChartOptions: ChartConfiguration<'bar'>['options'] = {
-    responsive: false,
+    responsive: true,
   };
 }
