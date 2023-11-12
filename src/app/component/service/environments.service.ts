@@ -31,8 +31,4 @@ export class EnvironmentsService {
     const docReg = doc(this.firestore, `crud/${user}`);
     return deleteDoc(docReg);
   }
-  /*updateUser(user: product) {
-    const docReg = updateDoc(this.firestore, `crud/${user}`);
-    return 
-  }*/
 }

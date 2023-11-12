@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { product } from '../../interface/usuario';
@@ -20,10 +20,10 @@ export class CrearUsuarioComponent {
     private route: Router,
   ) {
     this.form = new FormGroup({
-      producto: new FormGroup('', [Validators.required]),
-      fecha: new FormGroup('', [Validators.required]),
-      stock: new FormGroup('', [Validators.required]),
-      ventas: new FormGroup('', [Validators.required]),
+      producto: new FormControl('', [Validators.required]),
+      fecha: new FormControl('', [Validators.required]),
+      stock: new FormControl('', [Validators.required]),
+      ventas: new FormControl('', [Validators.required]),
     });
   }
 
