@@ -35,14 +35,24 @@ export class CrearUsuarioComponent {
     });
   }
 
-  async addUser() {
+  async addProduct() {
     const product: product = {
       producto: this.form.value.producto,
       ventas: this.form.value.ventas,
       stock: this.form.value.stock,
       fecha: this.form.value.fecha,
     };
-    const response = await this.fire.addUser(product);
+    const response = await this.fire.addProduct(product);
+    this.route.navigate(['/dashboard/inicio']);
+  }
+  async updateProduct() {
+    const product: product = {
+      producto: this.form.value.producto,
+      ventas: this.form.value.ventas,
+      stock: this.form.value.stock,
+      fecha: this.form.value.fecha,
+    };
+    const response = await this.fire.updateProduct(product);
     this.route.navigate(['/dashboard/inicio']);
   }
 }

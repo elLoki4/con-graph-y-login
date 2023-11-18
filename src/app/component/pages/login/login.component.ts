@@ -8,7 +8,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  constructor(private ConfAut: AngularFireAuth, private route: Router) {}
+  constructor(
+    private ConfAut: AngularFireAuth,
+    private route: Router,
+  ) {}
   persona = {
     mail: '',
     password: '',
@@ -17,8 +20,9 @@ export class LoginComponent {
     const mail = this.persona.mail;
     const password = this.persona.password;
     this.ConfAut.signInWithEmailAndPassword(mail, password).then((user) => {
-      console.log(user);
-      this.route.navigate(['/dashboard/inicio']);
+      if (user) {
+        this.route.navigate(['/dashboard/inicio']);
+      }
     });
   }
 }

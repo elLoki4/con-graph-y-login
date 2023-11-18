@@ -1,0 +1,12 @@
+.card-body {
+  height: 70vh;
+  width: 100%;
+}
+.card-footer {
+  width: 100%;
+}
+.card-block {
+  width: 15em;
+  heihgt: 2em;
+  padding: 2em;
+}

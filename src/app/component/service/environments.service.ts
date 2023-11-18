@@ -7,28 +7,40 @@ import {
   doc,
   deleteDoc,
   updateDoc,
+  setDoc,
 } from '@angular/fire/firestore';
-import { product } from '../interface/usuario';
+import { prodcutUpdate, product } from '../interface/usuario';
 import { Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 //import { collectionData } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EnvironmentsService {
-  constructor(private firestore: Firestore) {}
+  constructor(private firestore: Firestore,private auth:AngularFireAuth) {}
 
-  addUser(product: product) {
+  addProduct(product: product) {
     const userReg = collection(this.firestore, 'crud');
     return addDoc(userReg, product);
   }
 
-  getUser(): Observable<any[]> {
+  getProduct(): Observable<any[]> {
     const userReg = collection(this.firestore, 'crud');
     return collectionData(userReg, { idField: 'id' }) as Observable<any[]>;
   }
-  deleteUser(user: product) {
+  deleteProduct(user: product) {
     const docReg = doc(this.firestore, `crud/${user}`);
     return deleteDoc(docReg);
   }
+
+  updateProduct(user: any) {
+    const docReg = doc(this.firestore, `crud/${user}`);
+
+    return updateDoc(docReg, user);
+  }
+  token(){
+    this.auth.idTokenResult
+  }
+
 }

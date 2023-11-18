@@ -9,10 +9,11 @@ import { SharedModule } from './component/shared/shared.module';
 import { InicioComponent } from './component/dashboard/inicio/inicio.component';
 import { CrearUsuarioComponent } from './component/dashboard/crear-usuario/crear-usuario.component';
 import { InicioModule } from './component/dashboard/inicio/inicio.module';
+import { watchmenGuard } from './component/shared/guards/watchmen.guard';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'inicio',
     component: HomeComponent,
   },
   {
@@ -29,6 +30,7 @@ const routes: Routes = [
       import('./component/dashboard/reportes/reportes.module').then(
         (m) => m.ReportesModule,
       ),
+    canActivate: [watchmenGuard],
   },
 
   {

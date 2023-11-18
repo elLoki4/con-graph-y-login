@@ -6,6 +6,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatPaginator } from '@angular/material/paginator';
 import { product } from '../../interface/usuario';
 import { ChartConfiguration } from 'chart.js';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inicio',
@@ -13,31 +15,46 @@ import { ChartConfiguration } from 'chart.js';
   styleUrls: ['./inicio.component.css'],
 })
 export class InicioComponent {
+  ngOnInit(): void {
+    this.getUser.getProduct().subscribe((product) => {
+      this.listProduct = product;
+      this.dataSource = new MatTableDataSource(this.listProduct);
+
+      this.agregarLabels(this.listProduct.map((data) => data.fecha));
+
+      this.agregarDataset(
+        this.listProduct.map((data) => data.ventas),
+        'Ventas anuales',
+      );
+    });
+  }
+  listProduct: product[] = [];
   constructor(
     private fire: EnvironmentsService,
     private _snackBar: MatSnackBar,
     private getUser: EnvironmentsService,
+    private firebase: AngularFireAuth,
+    private route: Router,
   ) {
-    this.agregarDataset(
-      this.listProduct.map((item) => item.stock),
-      'Ventas Mensuales',
-    );
+    console.log(this.listProduct);
+  }
+
+  agregarLabels(datos: any) {
+    this.barChartData.labels?.push(...datos);
   }
   agregarDataset(datos: number[], label: string): void {
-    this.barChartData.datasets.push({ data: datos, label: label });
+    const newData = { data: datos, label: label };
+    this.barChartData.datasets.push(newData);
+  }
+
+  updateUser(user: product) {
+    this.getUser.getProduct().subscribe((ProductData) => {
+      this.listProduct = ProductData;
+    });
   }
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  listProduct: product[] = [];
-
-  ngOnInit(): void {
-    this.getUser.getUser().subscribe((product) => {
-      this.listProduct = product;
-      console.log(this.listProduct);
-      this.dataSource = new MatTableDataSource(this.listProduct);
-    });
-  }
   dataSource!: MatTableDataSource<any>;
 
   displayedColumns: string[] = [
@@ -57,26 +74,29 @@ export class InicioComponent {
   }
 
   async eliminarProducto(product: product) {
-    const deleteId = await this.fire.deleteUser(product);
+    const deleteId = await this.fire.deleteProduct(product);
     this._snackBar.open('el producto fue eliminado', '', {
       duration: 3000,
       horizontalPosition: 'center',
       verticalPosition: 'top',
     });
   }
+  cerrar() {
+    this.firebase.signOut();
+    this.route.navigate(['/home/login']);
+  }
 
   public barChartLegend = true;
   public barChartPlugins = [];
 
   public barChartData: ChartConfiguration<'bar'>['data'] = {
-    labels: ['2006', '2007', '2008', '2009', '2010', '2011', '2012'],
-    datasets: [
-      { data: [65, 59], label: 'Series A' },
-      { data: [28, 48], label: 'Series B' },
-    ],
+    datasets: [],
   };
 
   public barChartOptions: ChartConfiguration<'bar'>['options'] = {
     responsive: true,
   };
+  token() {
+    console.log(this.token());
+  }
 }

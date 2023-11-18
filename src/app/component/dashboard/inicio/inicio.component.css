@@ -1,6 +1,3 @@
-.agregar {
-  margin-left: 85vw;
-}
-.card canva {
-  height: 3em;
+.example-spacer {
+  flex: 1 1 auto;
 }
