@@ -8,6 +8,7 @@ import {
   deleteDoc,
   updateDoc,
   setDoc,
+  getDoc,
 } from '@angular/fire/firestore';
 import { prodcutUpdate, product } from '../interface/usuario';
 import { Observable } from 'rxjs';
@@ -18,7 +19,10 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
   providedIn: 'root',
 })
 export class EnvironmentsService {
-  constructor(private firestore: Firestore,private auth:AngularFireAuth) {}
+  constructor(
+    private firestore: Firestore,
+    private auth: AngularFireAuth,
+  ) {}
 
   addProduct(product: product) {
     const userReg = collection(this.firestore, 'crud');
@@ -34,13 +38,17 @@ export class EnvironmentsService {
     return deleteDoc(docReg);
   }
 
-  updateProduct(user: any) {
+  updateProduct(user: product, data: any) {
     const docReg = doc(this.firestore, `crud/${user}`);
-
-    return updateDoc(docReg, user);
+    return updateDoc(docReg, data);
   }
-  token(){
-    this.auth.idTokenResult
+  async getDataId(id: any) {
+    const docReg = doc(this.firestore, `crud/${id}`);
+    const newDoc = await getDoc(docReg);
+    if (newDoc.exists()) {
+      console.log('document data: ', newDoc.data());
+    } else {
+      console.log('no se encontro datos');
+    }
   }
-
 }

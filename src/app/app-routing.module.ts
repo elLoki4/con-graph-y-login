@@ -9,7 +9,8 @@ import { SharedModule } from './component/shared/shared.module';
 import { InicioComponent } from './component/dashboard/inicio/inicio.component';
 import { CrearUsuarioComponent } from './component/dashboard/crear-usuario/crear-usuario.component';
 import { InicioModule } from './component/dashboard/inicio/inicio.module';
-import { watchmenGuard } from './component/shared/guards/watchmen.guard';
+import { watchmenGuard } from './guards/watchmen.guard';
+import { NewDataComponent } from './new-data/new-data.component';
 
 const routes: Routes = [
   {
@@ -24,18 +25,11 @@ const routes: Routes = [
     path: 'home/register',
     component: RegisterComponent,
   },
-  {
-    path: 'dashboard/reportes',
-    loadChildren: () =>
-      import('./component/dashboard/reportes/reportes.module').then(
-        (m) => m.ReportesModule,
-      ),
-    canActivate: [watchmenGuard],
-  },
 
   {
     path: 'dashboard/crearusuario',
     component: CrearUsuarioComponent,
+    canActivate: [watchmenGuard],
   },
   {
     path: 'dashboard/inicio',
@@ -43,6 +37,12 @@ const routes: Routes = [
       import('./component/dashboard/inicio/inicio.module').then(
         (m) => m.InicioModule,
       ),
+    canActivate: [watchmenGuard],
+  },
+  {
+    path: 'newData/:id',
+    component: NewDataComponent,
+    canActivate: [watchmenGuard],
   },
 ];
 
@@ -53,6 +53,7 @@ const routes: Routes = [
     HomeComponent,
     InicioComponent,
     CrearUsuarioComponent,
+    NewDataComponent,
   ],
   imports: [SharedModule, CommonModule, RouterModule.forRoot(routes)],
   exports: [RouterModule],

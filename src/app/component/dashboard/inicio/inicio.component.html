@@ -13,7 +13,7 @@
      
      
 
-        <canvas baseChart
+ <canvas baseChart
         [data]="barChartData"
         [options]="barChartOptions"
         [plugins]="barChartPlugins"
@@ -74,7 +74,7 @@
                  <mat-icon aria-hidden="false" (click)="eliminarProducto(element.id)" aria-label="Example home icon"  fontIcon="delete"  matTooltip="Delete" aria-label="Button that displays a tooltip when focused or hovered over" ></mat-icon>
                </a>
                <a href="#">
-                 <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="updateUser(element.id)"  [routerLink]="['/dashboard/crearusuario/',element.id]" fontIcon="edit" matTooltip="Edit" aria-label="Button that displays a tooltip when focused or hovered over"></mat-icon>
+                 <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="updateUser(element.id)"  [routerLink]="['/newData/',element.id]" fontIcon="edit" matTooltip="Edit" aria-label="Button that displays a tooltip when focused or hovered over"></mat-icon>
                </a>
              </td>
            </ng-container>

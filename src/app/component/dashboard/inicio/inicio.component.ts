@@ -18,7 +18,6 @@ export class InicioComponent {
   ngOnInit(): void {
     this.getUser.getProduct().subscribe((product) => {
       this.listProduct = product;
-      this.dataSource = new MatTableDataSource(this.listProduct);
 
       this.agregarLabels(this.listProduct.map((data) => data.fecha));
 
@@ -26,6 +25,7 @@ export class InicioComponent {
         this.listProduct.map((data) => data.ventas),
         'Ventas anuales',
       );
+      this.dataSource = new MatTableDataSource(this.listProduct);
     });
   }
   listProduct: product[] = [];
@@ -35,9 +35,7 @@ export class InicioComponent {
     private getUser: EnvironmentsService,
     private firebase: AngularFireAuth,
     private route: Router,
-  ) {
-    console.log(this.listProduct);
-  }
+  ) {}
 
   agregarLabels(datos: any) {
     this.barChartData.labels?.push(...datos);
@@ -96,7 +94,4 @@ export class InicioComponent {
   public barChartOptions: ChartConfiguration<'bar'>['options'] = {
     responsive: true,
   };
-  token() {
-    console.log(this.token());
-  }
 }

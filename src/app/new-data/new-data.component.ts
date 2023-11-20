@@ -1,23 +1,25 @@
 import { Component } from '@angular/core';
-
+import { product } from '../component/interface/usuario';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
-import { product } from '../../interface/usuario';
-import { EnvironmentsService } from '../../service/environments.service';
+import { EnvironmentsService } from '../component/service/environments.service';
+import { switchMap } from 'rxjs';
 
 @Component({
-  selector: 'app-crear-usuario',
-  templateUrl: './crear-usuario.component.html',
-  styleUrls: ['./crear-usuario.component.css'],
+  selector: 'app-new-data',
+  templateUrl: './new-data.component.html',
+  styleUrls: ['./new-data.component.css'],
 })
-export class CrearUsuarioComponent {
+export class NewDataComponent {
   form: FormGroup;
+  datos: any = '';
 
   constructor(
     private fire: EnvironmentsService,
     private snack: MatSnackBar,
     private route: Router,
+    private activeRoute: ActivatedRoute,
   ) {
     this.form = new FormGroup({
       producto: new FormControl('', [Validators.required]),
@@ -26,9 +28,17 @@ export class CrearUsuarioComponent {
       ventas: new FormControl('', [Validators.required]),
     });
   }
+  ngOnInit(): void {
+    this.activeRoute.params.pipe(
+      switchMap((params) => {
+        this.datos = this.fire.getDataId(params['id']);
+        return this.datos;
+      }),
+    );
+  }
 
   openSnackBar() {
-    this.snack.open('producto añadido', '', {
+    this.snack.open('producto actualizado', '', {
       duration: 300,
       horizontalPosition: 'center',
       verticalPosition: 'top',
@@ -44,9 +54,13 @@ export class CrearUsuarioComponent {
     };
     const response = await this.fire.addProduct(product);
     this.route.navigate(['/dashboard/inicio']);
-    this.openSnackBar();
   }
-  enviar() {
-    this.addProduct();
+  async updateProduct() {
+    const product: product = {
+      producto: this.form.value.producto,
+      ventas: this.form.value.ventas,
+      stock: this.form.value.stock,
+      fecha: this.form.value.fecha,
+    };
   }
 }

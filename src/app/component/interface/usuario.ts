@@ -7,8 +7,8 @@ export interface product {
 }
 export interface prodcutUpdate {
   id?: string;
-  stock?: number;
-  ventas?: number;
-  fecha?: number;
-  producto?: string;
+  stock: number;
+  ventas: number;
+  fecha: number;
+  producto: string;
 }

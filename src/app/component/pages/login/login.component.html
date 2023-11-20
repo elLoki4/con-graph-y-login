@@ -9,7 +9,8 @@
                 </div>
                 <div class="input"> <input type="password" placeholder="password" name="password" [(ngModel)]="persona.password">
                 </div>
-                <button  class="button" type="submit" class="btn btn-primary">enviar</button>
+                
+                <button [disabled]="!(persona.password && persona.mail)" class="button" type="submit" class="btn btn-primary">enviar</button>
              </form>
          </div>
         </div>

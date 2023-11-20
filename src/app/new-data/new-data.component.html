@@ -3,13 +3,14 @@
   
       <form [formGroup]="form" >
       
-      <mat-grid-list cols="4" rowHeight="70px">
+     
+       <mat-grid-list cols="4" rowHeight="70px">
           <mat-grid-tile 
           [colspan]="1"
           [rowspan]="1">
           <mat-form-field class="example-full-width">
               <mat-label>producto</mat-label>
-              <input matInput placeholder="producto" formControlName="producto">
+              <input matInput placeholder="producto" formControlName="producto">{{datos.producto}}
             </mat-form-field>
       </mat-grid-tile>
        
@@ -19,7 +20,7 @@
           >
           <mat-form-field class="example-full-width">
               <mat-label>stock</mat-label>
-              <input matInput placeholder="stock" formControlName="stock">
+              <input matInput placeholder="stock" formControlName="stock">{{datos.stock}}
             </mat-form-field>
       </mat-grid-tile>
           <mat-grid-tile 
@@ -28,7 +29,7 @@
           >
           <mat-form-field class="example-full-width">
               <mat-label>ventas</mat-label>
-              <input matInput placeholder="ventas" formControlName="ventas" >
+              <input matInput placeholder="ventas" formControlName="ventas" >{{datos.ventas}}
             </mat-form-field>
            </mat-grid-tile>
           
@@ -38,13 +39,14 @@
           >
             <mat-form-field class="example-full-width">
               <mat-label>fecha</mat-label>
-              <input matInput placeholder="ingrese la fecha" formControlName="fecha" >
+              <input matInput placeholder="ingrese la fecha" formControlName="fecha" >{{datos.fecha}}
             </mat-form-field>
            </mat-grid-tile>
   
  
+     
           <mat-grid-tile >
-          <button type="submit" class="separar" (click)="enviar() "  mat-raised-button color="primary">aceptar</button>
+          <button type="submit" class="separar"  mat-raised-button color="primary">aceptar</button>
           <button type="submit"  mat-raised-button color="primary">volver</button>
       </mat-grid-tile>
       
