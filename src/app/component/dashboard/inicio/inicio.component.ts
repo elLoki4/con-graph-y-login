@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 })
 export class InicioComponent {
   ngOnInit(): void {
-    this.getUser.getProduct().subscribe((product) => {
+    const subcribe = this.getUser.getProduct().subscribe((product) => {
       this.listProduct = product;
 
       this.agregarLabels(this.listProduct.map((data) => data.fecha));
@@ -45,11 +45,11 @@ export class InicioComponent {
     this.barChartData.datasets.push(newData);
   }
 
-  updateUser(user: product) {
+  /*  updateUser(user: product) {
     this.getUser.getProduct().subscribe((ProductData) => {
       this.listProduct = ProductData;
     });
-  }
+  }*/
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -94,4 +94,5 @@ export class InicioComponent {
   public barChartOptions: ChartConfiguration<'bar'>['options'] = {
     responsive: true,
   };
+  ngOnDestroy(): void {}
 }

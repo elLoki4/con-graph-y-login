@@ -4,7 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EnvironmentsService } from '../component/service/environments.service';
-import { switchMap } from 'rxjs';
+import { of, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-new-data',
@@ -29,12 +29,17 @@ export class NewDataComponent {
     });
   }
   ngOnInit(): void {
-    this.activeRoute.params.pipe(
-      switchMap((params) => {
-        this.datos = this.fire.getDataId(params['id']);
-        return this.datos;
-      }),
-    );
+    this.activeRoute.params
+      .pipe(
+        switchMap((params) => {
+          const id = params['id'];
+          return of(id);
+        }),
+      )
+      .subscribe((datos) => {
+        this.datos = datos;
+        console.log(this.datos);
+      });
   }
 
   openSnackBar() {
@@ -45,16 +50,6 @@ export class NewDataComponent {
     });
   }
 
-  async addProduct() {
-    const product: product = {
-      producto: this.form.value.producto,
-      ventas: this.form.value.ventas,
-      stock: this.form.value.stock,
-      fecha: this.form.value.fecha,
-    };
-    const response = await this.fire.addProduct(product);
-    this.route.navigate(['/dashboard/inicio']);
-  }
   async updateProduct() {
     const product: product = {
       producto: this.form.value.producto,
@@ -62,5 +57,7 @@ export class NewDataComponent {
       stock: this.form.value.stock,
       fecha: this.form.value.fecha,
     };
+    const response = await this.fire.updateProduct(this.datos, product);
+    this.route.navigate(['/dashboard/inicio']);
   }
 }

@@ -5,10 +5,10 @@ export interface product {
   fecha: number;
   producto: string;
 }
-export interface prodcutUpdate {
+export interface productUpdate {
   id?: string;
-  stock: number;
-  ventas: number;
-  fecha: number;
-  producto: string;
+  stock?: number;
+  ventas?: number;
+  fecha?: number;
+  producto?: string;
 }

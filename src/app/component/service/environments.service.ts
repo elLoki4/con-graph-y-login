@@ -10,7 +10,7 @@ import {
   setDoc,
   getDoc,
 } from '@angular/fire/firestore';
-import { prodcutUpdate, product } from '../interface/usuario';
+import { product } from '../interface/usuario';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 //import { collectionData } from '@angular/fire/firestore';
@@ -38,17 +38,10 @@ export class EnvironmentsService {
     return deleteDoc(docReg);
   }
 
-  updateProduct(user: product, data: any) {
+  async updateProduct(user: product, data: any) {
     const docReg = doc(this.firestore, `crud/${user}`);
-    return updateDoc(docReg, data);
-  }
-  async getDataId(id: any) {
-    const docReg = doc(this.firestore, `crud/${id}`);
-    const newDoc = await getDoc(docReg);
-    if (newDoc.exists()) {
-      console.log('document data: ', newDoc.data());
-    } else {
-      console.log('no se encontro datos');
-    }
+    return updateDoc(docReg, data).catch((e) => {
+      console.log(e);
+    });
   }
 }

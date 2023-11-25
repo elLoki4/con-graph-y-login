@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './component/pages/home/home.component';
+
 import { LoginComponent } from './component/pages/login/login.component';
 import { RegisterComponent } from './component/pages/register/register.component';
 import { SharedModule } from './component/shared/shared.module';
@@ -13,10 +13,6 @@ import { watchmenGuard } from './guards/watchmen.guard';
 import { NewDataComponent } from './new-data/new-data.component';
 
 const routes: Routes = [
-  {
-    path: 'inicio',
-    component: HomeComponent,
-  },
   {
     path: 'home/login',
     component: LoginComponent,
@@ -50,7 +46,7 @@ const routes: Routes = [
   declarations: [
     RegisterComponent,
     LoginComponent,
-    HomeComponent,
+
     InicioComponent,
     CrearUsuarioComponent,
     NewDataComponent,
