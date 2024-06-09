@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -16,6 +17,7 @@ export class RegisterComponent {
   constructor(
     private Auth: AngularFireAuth,
     private _snackBar: MatSnackBar,
+    private route: Router,
   ) {}
   registrar() {
     const mail = this.persona.mail;
@@ -26,6 +28,7 @@ export class RegisterComponent {
         horizontalPosition: 'center',
         verticalPosition: 'top',
       });
+      this.route.navigate(['/home/login']);
     });
   }
 }

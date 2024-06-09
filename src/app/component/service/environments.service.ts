@@ -5,10 +5,10 @@ import {
   collection,
   collectionData,
   doc,
+  deleteDoc,
 } from '@angular/fire/firestore';
 import { product } from '../interface/usuario';
 import { Observable } from 'rxjs';
-//import { collectionData } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root',
@@ -26,6 +26,7 @@ export class EnvironmentsService {
     return collectionData(userReg, { idField: 'id' }) as Observable<any[]>;
   }
   deleteUser(user: product) {
-    const docReg = doc(this.firestore, `crud${user.id}`);
+    const docReg = doc(this.firestore, `crud/${user}/`);
+    return deleteDoc(docReg);
   }
 }
