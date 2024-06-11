@@ -25,7 +25,7 @@ export class InicioComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   listProduct: product[] = [];
-  dataSource!: MatTableDataSource<any>;
+  dataSource = new MatTableDataSource<product>(this.listProduct);
 
   displayedColumns: string[] = [
     'fecha',
@@ -52,26 +52,34 @@ export class InicioComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.getUser.getUser().subscribe((products) => {
       this.listProduct = products;
-      this.dataSource = new MatTableDataSource(this.listProduct);
-      this.initializeChartData(); // Inicializa los datos del gráfico con los productos obtenidos
+      this.dataSource.data = this.listProduct;
+      this.initializeChartData();
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     });
   }
 
   ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
+    // Ensure paginator and sort are set after view initialization
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
-  async eliminarProducto(product: any) {
+  async eliminarProducto(product: product) {
+    console.log(product);
     const deleteId = await this.fire.deleteUser(product);
-    this.listProduct = this.listProduct.filter((p) => p.id !== product.id); // Actualiza la lista de productos
-    this.dataSource.data = this.listProduct; // Actualiza la dataSource
-    this.initializeChartData(); // Actualiza los datos del gráfico después de eliminar un producto
+    this.listProduct = this.listProduct.filter((p) => p.id !== product.id);
+    this.dataSource.data = this.listProduct;
+    this.initializeChartData();
     this._snackBar.open('El producto fue eliminado', '', {
       duration: 3000,
       horizontalPosition: 'center',

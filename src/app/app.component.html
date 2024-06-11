@@ -1,11 +1,11 @@
 <p>
   <mat-toolbar>
     <span>My Application</span>
-    <a routerLink="home/login" routerLinkActive="active">login</a>
-    <a routerLink="home/register" routerLinkActive="active">registro</a>
-  </mat-toolbar>
-</p>  
-
-
+    <a *ngIf="!isAuthenticated" routerLink="home/login" routerLinkActive="active">Login</a>
+    <a *ngIf="!isAuthenticated" routerLink="home/register" routerLinkActive="active">Register</a>
+    <a *ngIf="isAuthenticated" routerLink="dashboard" routerLinkActive="active">Dashboard</a>
+    <a *ngIf="isAuthenticated" (click)="logout()"><mat-icon aria-hidden="false" aria-label="Logout icon" fontIcon="logout"></mat-icon>Logout</a>
+  </mat-toolbar> 
+</p>
 
 <router-outlet></router-outlet>

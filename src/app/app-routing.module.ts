@@ -9,6 +9,7 @@ import { SharedModule } from './component/shared/shared.module';
 import { InicioComponent } from './component/dashboard/inicio/inicio.component';
 import { CrearUsuarioComponent } from './component/dashboard/crear-usuario/crear-usuario.component';
 import { InicioModule } from './component/dashboard/inicio/inicio.module';
+import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -29,6 +30,7 @@ const routes: Routes = [
       import('./component/dashboard/reportes/reportes.module').then(
         (m) => m.ReportesModule,
       ),
+    canActivate: [authGuard],
   },
 
   {

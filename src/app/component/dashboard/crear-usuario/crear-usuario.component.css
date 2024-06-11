@@ -1,6 +1,8 @@
-.example-full-width,
-.sexo {
-  width: 100%;
+.example-full-width {
+  max-width: 10em;
+}
+.iconFecha {
+  margin: 10px;
 }
 .separar {
   margin-right: 20px;

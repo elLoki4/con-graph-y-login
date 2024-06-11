@@ -18,12 +18,16 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { NgChartsModule } from 'ng2-charts';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [],
   imports: [
     MatDividerModule,
+    MatNativeDateModule,
     FormsModule,
+    MatDatepickerModule,
     MatToolbarModule,
     BrowserAnimationsModule,
     MatInputModule,
@@ -45,6 +49,8 @@ import { NgChartsModule } from 'ng2-charts';
   exports: [
     MatTableModule,
     BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatFormFieldModule,
     MatButtonModule,
     MatDividerModule,
