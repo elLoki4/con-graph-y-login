@@ -9,11 +9,7 @@ import { ServiceService } from './component/service/service.service';
 export class AppComponent {
   isAuthenticated = false;
   constructor(private authService: ServiceService) {}
-  gOnInit() {
-    this.authService.isAuth().subscribe((status) => {
-      this.isAuthenticated = status;
-    });
-  }
+  gOnInit() {}
 
   logout() {
     this.authService.logout();

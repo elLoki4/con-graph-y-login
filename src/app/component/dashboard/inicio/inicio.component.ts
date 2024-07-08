@@ -18,7 +18,6 @@ export class InicioComponent implements OnInit, AfterViewInit {
     private fire: EnvironmentsService,
     private _snackBar: MatSnackBar,
     private getUser: EnvironmentsService,
-    private store: Store<any>,
   ) {}
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -60,7 +59,7 @@ export class InicioComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    // Ensure paginator and sort are set after view initialization
+    
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }

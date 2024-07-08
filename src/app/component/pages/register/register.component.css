@@ -7,6 +7,14 @@
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to bottom, #4286f4, #373b44);
 }
+
+.icon-color {
+  color: white;
+}
+.password {
+  position: relative;
+  left: 8%;
+}
 .container {
   display: flex;
   justify-content: center;

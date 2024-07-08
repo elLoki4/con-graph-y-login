@@ -2,37 +2,29 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './component/pages/home/home.component';
 import { LoginComponent } from './component/pages/login/login.component';
 import { RegisterComponent } from './component/pages/register/register.component';
 import { SharedModule } from './component/shared/shared.module';
 import { InicioComponent } from './component/dashboard/inicio/inicio.component';
 import { CrearUsuarioComponent } from './component/dashboard/crear-usuario/crear-usuario.component';
-import { InicioModule } from './component/dashboard/inicio/inicio.module';
-import { authGuard } from './guards/auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
-  },
-  {
-    path: 'home/login',
     component: LoginComponent,
   },
   {
-    path: 'home/register',
+    path: 'register',
     component: RegisterComponent,
   },
   {
     path: 'dashboard/reportes',
     loadChildren: () =>
       import('./component/dashboard/reportes/reportes.module').then(
-        (m) => m.ReportesModule,
+        (m) => m.ReportesModule
       ),
-    canActivate: [authGuard],
   },
-
   {
     path: 'dashboard/crearusuario',
     component: CrearUsuarioComponent,
@@ -41,8 +33,9 @@ const routes: Routes = [
     path: 'dashboard/inicio',
     loadChildren: () =>
       import('./component/dashboard/inicio/inicio.module').then(
-        (m) => m.InicioModule,
+        (m) => m.InicioModule
       ),
+    canActivate: [AuthGuard],
   },
 ];
 
@@ -50,7 +43,6 @@ const routes: Routes = [
   declarations: [
     RegisterComponent,
     LoginComponent,
-    HomeComponent,
     InicioComponent,
     CrearUsuarioComponent,
   ],
