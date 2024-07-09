@@ -16,7 +16,7 @@
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" routerLink="">login</a>
+            <a class="nav-link" *ngIf="isLogged" routerLink="">login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" aria-current="page" routerLink="register"
@@ -24,7 +24,13 @@
             >
           </li>
         </ul>
-        <span class="navbar-text"> Navbar text with an inline element </span>
+        <span class="navbar-text" *ngIf="isLogged" (click)="cerrar()">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="logout"
+          ></mat-icon>
+        </span>
       </div>
     </div>
   </nav>

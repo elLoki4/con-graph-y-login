@@ -1,2 +1,1 @@
-se realizo la separacion del auth y el guards.
 ahora a partir de esto quiero hacer el logout, que me saque del dashboard.

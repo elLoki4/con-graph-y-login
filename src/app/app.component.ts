@@ -1,17 +1,23 @@
-import { Component } from '@angular/core';
-import { ServiceService } from './component/service/service.service';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from './component/service/auth.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
-  isAuthenticated = false;
-  constructor(private authService: ServiceService) {}
-  gOnInit() {}
+export class AppComponent implements OnInit {
+  isLogged: boolean = false;
 
-  logout() {
+  constructor(private authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.authService.getAuthStatus().subscribe((status: boolean) => {
+      this.isLogged = status;
+    });
+  }
+
+  cerrar() {
     this.authService.logout();
   }
 }

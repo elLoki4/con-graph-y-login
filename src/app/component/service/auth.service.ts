@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,11 +13,17 @@ export class AuthService {
     private router: Router,
     private snackBar: MatSnackBar
   ) {}
+  authState = new BehaviorSubject<boolean>(false);
+
+  getAuthStatus(): Observable<boolean> {
+    return this.authState.asObservable();
+  }
 
   login(persona: any) {
     this.auth
       .signInWithEmailAndPassword(persona.mail, persona.password)
       .then((user) => {
+        this.authState.next(true);
         this.router.navigate(['/dashboard/inicio']);
       })
       .catch((error) => {
@@ -50,11 +57,8 @@ export class AuthService {
 
   logout() {
     this.auth.signOut().then(() => {
-      this.router.navigate(['/login']);
+      this.authState.next(false);
+      this.router.navigate(['']);
     });
-  }
-
-  getAuthStatus() {
-    return this.auth.authState;
   }
 }
