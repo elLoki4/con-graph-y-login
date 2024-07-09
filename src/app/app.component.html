@@ -1,11 +1,50 @@
-<p>
-  <mat-toolbar>
-    <span>My Application</span>
-    <a routerLink="home/login" routerLinkActive="active">login</a>
-    <a routerLink="home/register" routerLinkActive="active">registro</a>
-  </mat-toolbar>
-</p>  
-
-
-
+<nav data-bs-theme="dark">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" *ngIf="!isLogged" routerLink="">Dashboard</a>
+      <a class="navbar-brand" *ngIf="isLogged" routerLink="dashboard/inicio"
+        >Dashboard</a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarText"
+        aria-controls="navbarText"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" *ngIf="!isLogged" routerLink="">login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" *ngIf="isLogged" routerLink="dashboard/inicio">
+              inicio</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              *ngIf="!isLogged"
+              aria-current="page"
+              routerLink="register"
+              >registro</a
+            >
+          </li>
+        </ul>
+        <span class="navbar-text" *ngIf="isLogged" (click)="cerrar()">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="logout"
+          ></mat-icon>
+        </span>
+      </div>
+    </div>
+  </nav>
+</nav>
 <router-outlet></router-outlet>

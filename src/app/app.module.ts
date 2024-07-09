@@ -14,13 +14,14 @@ import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-
+import { SharedModule } from './component/shared/shared.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
     MatToolbarModule,
     BrowserModule,
     CommonModule,
+    SharedModule,
     RouterModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),

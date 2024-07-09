@@ -1,57 +1,60 @@
-<mat-card style="margin-top:10px;">
-    <mat-card-content>
-  
-      <form [formGroup]="form" >
-      
-      <mat-grid-list cols="4" rowHeight="70px">
-          <mat-grid-tile 
-          [colspan]="1"
-          [rowspan]="1">
+<mat-card style="margin-top: 10px">
+  <mat-card-content>
+    <form [formGroup]="form">
+      <mat-grid-list
+        cols="4"
+        rowHeight="70px"
+        [gutterSize]="'16px'"
+        [ngClass]="{ 'responsive-grid': true }"
+      >
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field class="example-full-width">
-              <mat-label>producto</mat-label>
-              <input matInput placeholder="producto" formControlName="producto">
-            </mat-form-field>
-      </mat-grid-tile>
-       
-          <mat-grid-tile 
-          [colspan]="1"
-          [rowspan]="1"
-          >
+            <mat-label>Producto</mat-label>
+            <input matInput placeholder="Producto" formControlName="producto" />
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field class="example-full-width">
-              <mat-label>stock</mat-label>
-              <input matInput placeholder="stock" formControlName="stock">
-            </mat-form-field>
-      </mat-grid-tile>
-          <mat-grid-tile 
-          [colspan]="1"
-          [rowspan]="1"
-          >
+            <mat-label>Stock</mat-label>
+            <input matInput placeholder="Stock" formControlName="stock" />
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field class="example-full-width">
-              <mat-label>ventas</mat-label>
-              <input matInput placeholder="ventas" formControlName="ventas" >
-            </mat-form-field>
-           </mat-grid-tile>
-          
-           <mat-grid-tile 
-          [colspan]="1"
-          [rowspan]="1"
+            <mat-label>Ventas</mat-label>
+            <input matInput placeholder="Ventas" formControlName="ventas" />
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="example-full-width">
+            <mat-label>Fecha</mat-label>
+            <input
+              matInput
+              placeholder="Ingrese una fecha"
+              formControlName="fecha"
+            />
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="4" [rowspan]="1" class="button-tile">
+          <button
+            type="submit"
+            class="separar"
+            (click)="addUser()"
+            mat-raised-button
+            color="primary"
           >
-            <mat-form-field class="example-full-width">
-              <mat-label>fecha</mat-label>
-              <input matInput placeholder="ingrese su apellido" formControlName="fecha" >
-            </mat-form-field>
-           </mat-grid-tile>
-  
- 
-          <mat-grid-tile >
-          <button type="submit" class="separar" (click)="addUser()" mat-raised-button color="primary">aceptar</button>
-          <button type="submit"  mat-raised-button color="primary">volver</button>
-      </mat-grid-tile>
-      
-  
-  
-  </mat-grid-list>
-  
-  </form>      
-</mat-card-content>
-</mat-card>  
+            Aceptar
+          </button>
+          <button
+            type="button"
+            (click)="volver()"
+            mat-raised-button
+            color="accent"
+          >
+            Volver
+          </button>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form>
+  </mat-card-content>
+</mat-card>

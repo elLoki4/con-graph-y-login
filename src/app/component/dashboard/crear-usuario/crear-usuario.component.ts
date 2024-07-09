@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { product } from '../../interface/usuario';
@@ -18,12 +18,13 @@ export class CrearUsuarioComponent {
     private fire: EnvironmentsService,
     private snack: MatSnackBar,
     private route: Router,
+    private _snackBar: MatSnackBar,
   ) {
     this.form = new FormGroup({
-      producto: new FormGroup('', [Validators.required]),
-      fecha: new FormGroup('', [Validators.required]),
-      stock: new FormGroup('', [Validators.required]),
-      ventas: new FormGroup('', [Validators.required]),
+      producto: new FormControl('', [Validators.required]),
+      fecha: new FormControl('', [Validators.required]),
+      stock: new FormControl('', [Validators.required]),
+      ventas: new FormControl('', [Validators.required]),
     });
   }
 
@@ -43,6 +44,15 @@ export class CrearUsuarioComponent {
       fecha: this.form.value.fecha,
     };
     const response = await this.fire.addUser(product);
+    this._snackBar.open('elemento creado', '', {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+    });
+    this.route.navigate(['/dashboard/inicio']);
+  }
+
+  volver() {
     this.route.navigate(['/dashboard/inicio']);
   }
 }

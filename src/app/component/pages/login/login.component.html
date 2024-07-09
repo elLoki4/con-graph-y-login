@@ -1,17 +1,45 @@
 <div class="entorno">
-    <div class="container text-center">
-        <div class="card">
-         <div class="body-card">
-             <form (ngSubmit)="login()">
-                 <img src="https://img.freepik.com/vector-premium/icono-perfil-avatar_188544-4755.jpg?w=740" alt="user">
-                 <h1 >login</h1>
-                <div class="input"> <input type="text" placeholder="mail" name="mail" [(ngModel)]="persona.mail">
-                </div>
-                <div class="input"> <input type="password" placeholder="password" name="password" [(ngModel)]="persona.password">
-                </div>
-                <button  class="button" type="submit" class="btn btn-primary">enviar</button>
-             </form>
-         </div>
-        </div>
-     </div>
+  <div class="container text-center">
+    <div class="card">
+      <div class="body-card">
+        <form (ngSubmit)="login()">
+          <img
+            src="https://img.freepik.com/vector-premium/icono-perfil-avatar_188544-4755.jpg?w=740"
+            alt="user"
+          />
+          <h1>login</h1>
+          <div class="input">
+            <input
+              type="text"
+              placeholder="mail"
+              name="mail"
+              [(ngModel)]="persona.mail"
+            />
+          </div>
+          <div class="password">
+            <input
+              matInput
+              [type]="hide ? 'password' : 'text'"
+              name="password"
+              placeholder="password"
+              [(ngModel)]="persona.password"
+            />
+            <button
+              class="icon-color"
+              mat-icon-button
+              matSuffix
+              (click)="clickEvent($event)"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide"
+            >
+              <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+            </button>
+          </div>
+          <button class="button" type="submit" class="btn btn-primary">
+            enviar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
