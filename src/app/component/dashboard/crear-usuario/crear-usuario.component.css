@@ -1,9 +1,27 @@
-.example-full-width {
-  max-width: 10em;
+@media (max-width: 768px) {
+  .responsive-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .button-tile {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+  }
+
+  .example-full-width {
+    width: 100%;
+  }
 }
-.iconFecha {
-  margin: 10px;
-}
-.separar {
-  margin-right: 20px;
+
+@media (min-width: 769px) {
+  .button-tile {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .example-full-width {
+    width: 100%;
+  }
 }

@@ -56,8 +56,8 @@ export class AuthService {
   }
 
   logout() {
+    this.authState.next(false);
     this.auth.signOut().then(() => {
-      this.authState.next(false);
       this.router.navigate(['']);
     });
   }

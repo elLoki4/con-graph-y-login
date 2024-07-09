@@ -24,10 +24,12 @@ const routes: Routes = [
       import('./component/dashboard/reportes/reportes.module').then(
         (m) => m.ReportesModule
       ),
+    canActivate: [AuthGuard],
   },
   {
-    path: 'dashboard/crearusuario',
+    path: 'dashboard/crearelemento',
     component: CrearUsuarioComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'dashboard/inicio',
